@@ -89,5 +89,5 @@ like(emil, nurbolot)
 print(emil.like_count)
 print(nurbolot.like_count)
 print(david.like_count)
-
+print(nurbolot)
 print(emil)
