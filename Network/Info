@@ -1,0 +1,57 @@
+To access methods of a node from a different node with a different data type (class),
+you typically need to establish a relationship between the two node classes. This
+relationship could be direct or indirect, depending on the structure of your program. Here's a general approach:
+
+Define a Common Interface: If both node classes share common methods or behaviors,
+define an interface or a set of methods that both classes implement.
+
+Use Composition or Inheritance: Implement the relationship between the node
+classes using composition (where one class contains an instance of another) or inheritance
+(where one class extends or inherits from another).
+
+Access Methods Through Relationships: With the relationship established,
+ you can access methods of one node class from another by navigating through the relationship.
+
+Here's a simple example to illustrate these concepts:
+
+python
+Copy code
+class ListNode:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+    
+    def display_data(self):
+        print("ListNode Data:", self.data)
+
+class TreeNode:
+    def __init__(self, data):
+        self.data = data
+        self.left = None
+        self.right = None
+    
+    def display_data(self):
+        print("TreeNode Data:", self.data)
+
+    def get_list_node_data(self):
+        # Assuming there's a ListNode associated with this TreeNode
+        if hasattr(self, 'list_node') and isinstance(self.list_node, ListNode):
+            return self.list_node.data
+        else:
+            return None
+
+# Example of establishing a relationship between TreeNode and ListNode
+tree_node = TreeNode(10)
+list_node = ListNode(5)
+tree_node.list_node = list_node  # Associate a ListNode with the TreeNode
+
+# Accessing methods of ListNode from TreeNode
+tree_node.list_node.display_data()  # Output: ListNode Data: 5
+print("Data of ListNode associated with TreeNode:", tree_node.get_list_node_data())  # Output: Data of ListNode associated with TreeNode: 5
+In this example:
+
+Both ListNode and TreeNode classes have a display_data() method.
+TreeNode class has an additional method get_list_node_data() to retrieve data from the associated ListNode.
+We establish a relationship by associating a ListNode instance with a TreeNode instance (tree_node.list_node = list_node).
+We can then access methods of ListNode from TreeNode through this relationship.
+This example illustrates a basic way to access methods of a node from a different node with a different data type using Python's object-oriented features. Depending on your specific requirements, you may need to adjust this approach accordingly.
