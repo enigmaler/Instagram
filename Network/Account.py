@@ -1,3 +1,4 @@
+
 class Profile:
 
     like_count = 0
@@ -56,6 +57,8 @@ class Profile:
 
 
 
+
+
 emil = Profile("emil", "Emilbek", "love is love")
 nurbolot = Profile("nurbo", "Nurbolot", "To be is to do")
 david = Profile("dave", "David", "my bio")
@@ -74,8 +77,9 @@ def like(user_name, person):
 
 def dislike(user_name, person):
 
-    output = person.post_dislike(person.user_name)
-    print(output)
+    like(user_name, person)
+
+
 
 dislike(emil, nurbolot)
 
@@ -85,9 +89,10 @@ dislike(emil, nurbolot)
 
 like(emil, nurbolot)
 
-        
 print(emil.like_count)
 print(nurbolot.like_count)
 print(david.like_count)
 print(nurbolot)
 print(emil)
+
+print(type(emil))
